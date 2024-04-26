@@ -1,7 +1,16 @@
+using Kursova_1.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ManageEmployeesDbContext>(options =>
+{
+	var connectionString = builder.Configuration.GetConnectionString("ManageEmployees");
+	options.UseSqlServer(connectionString);
+});
 
 var app = builder.Build();
 
