@@ -4,6 +4,7 @@ using Kursova_1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kursova_1.Migrations
 {
     [DbContext(typeof(ManageEmployeesDbContext))]
-    partial class ManageEmployeesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240426134902_SeedEmployeesTable")]
+    partial class SeedEmployeesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,13 +34,13 @@ namespace Kursova_1.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Adress")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly?>("DateOfBirth")
+                    b.Property<DateOnly>("DateOfBirth")
                         .HasColumnType("date");
 
-                    b.Property<DateOnly?>("DateOfDismissal")
+                    b.Property<DateOnly>("DateOfDismissal")
                         .HasColumnType("date");
 
                     b.Property<DateOnly>("DateOfEmployment")
@@ -45,18 +48,15 @@ namespace Kursova_1.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Position")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Salary")
                         .HasColumnType("int");
@@ -71,6 +71,7 @@ namespace Kursova_1.Migrations
                             Id = 1,
                             Adress = "Київ вул. Шевченка 13",
                             DateOfBirth = new DateOnly(1990, 1, 1),
+                            DateOfDismissal = new DateOnly(1, 1, 1),
                             DateOfEmployment = new DateOnly(2020, 1, 1),
                             FirstName = "Андрій",
                             LastName = "Романов",
@@ -82,6 +83,7 @@ namespace Kursova_1.Migrations
                             Id = 2,
                             Adress = "Київ вул. Лесі Українки 67",
                             DateOfBirth = new DateOnly(1992, 2, 2),
+                            DateOfDismissal = new DateOnly(1, 1, 1),
                             DateOfEmployment = new DateOnly(2020, 2, 1),
                             FirstName = "Роман",
                             LastName = "Денисенко",
@@ -93,6 +95,7 @@ namespace Kursova_1.Migrations
                             Id = 3,
                             Adress = "Київ вул. Шевченка 56",
                             DateOfBirth = new DateOnly(1985, 3, 3),
+                            DateOfDismissal = new DateOnly(1, 1, 1),
                             DateOfEmployment = new DateOnly(2019, 3, 1),
                             FirstName = "Марія",
                             LastName = "Кузьменко",

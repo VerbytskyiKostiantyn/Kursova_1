@@ -1,5 +1,7 @@
 using Kursova_1.Models;
+using Kursova_1.Models.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace Kursova_1.Controllers
@@ -7,20 +9,33 @@ namespace Kursova_1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ManageEmployeesDbContext _db;
+        public HomeController(ILogger<HomeController> logger, ManageEmployeesDbContext db)
         {
             _logger = logger;
+            _db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<Employee> employees = _db.Employees.ToList();
+            return View(employees);
         }
 
         public IActionResult Create()
         {
             return View();
+        }
+		[HttpPost]
+		public IActionResult Create(Employee employee)
+		{
+            if (ModelState.IsValid)
+            {
+                _db.Employees.Add(employee);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(employee);
         }
 		public IActionResult Info()
 		{

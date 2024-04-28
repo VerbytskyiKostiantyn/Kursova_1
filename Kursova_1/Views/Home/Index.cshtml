@@ -1,3 +1,38 @@
-﻿<div class="text-center">
-    <h1 class="display-6">Облік штату організації</h1>
+﻿@model IEnumerable<Employee>
+<div class="text-center m-4">
+	<h1 class="display-6">Облік штату організації</h1>
 </div>
+<div class="m-6">
+	<table id="myTable" class="display">
+		<thead>
+			<tr>
+				<th width="20%" style="font-size: 140%;">Ім'я</th>
+				<th width="20%" style="font-size: 140%;">Прізвище</th>
+				<th width="20%" style="font-size: 140%;">Посада</th>
+				<th width="15%" style="font-size: 140%;">Прийняття на посаду</th>
+				<th width="15%" style="font-size: 140%;">Заробітна плата</th>
+				<th width="10%" style="font-size: 140%;"></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var employee in Model)
+			{
+				<tr>
+					<td style="font-size: 140%;">@employee.FirstName</td>
+					<td style="font-size: 140%;">@employee.LastName</td>
+					<td style="font-size: 140%;">@employee.Position</td>
+					<td style="font-size: 140%;">@employee.DateOfEmployment</td>
+					<td style="font-size: 140%;">@employee.Salary ₴</td>
+					<td style="font-size: 140%;">
+						<form asp-action="Info" asp-route-id="@employee.Id" method="post">
+							<button type="submit" class="btn btn-secondary" style="font-size: 140%;"><i class="bi bi-info-lg"></i></button>
+						</form>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+@section Scripts {
+	<script src="/js/employeeTable.js"></script>
+}
