@@ -18,8 +18,8 @@ namespace Kursova_1.Controllers
 
         public IActionResult Index()
         {
-            List<Employee> employees = _db.Employees.ToList();
-            return View(employees);
+			List<Employee> employees = _db.Employees.ToList();
+			return View(employees);
         }
 
         public IActionResult Create()
@@ -33,13 +33,43 @@ namespace Kursova_1.Controllers
             {
                 _db.Employees.Add(employee);
                 _db.SaveChanges();
+				TempData["success"] = "Дані успішно додано!";
+				return RedirectToAction("Index");
+            }
+            return View(employee);
+        }
+		public IActionResult Info(int id)
+		{
+            var employee = _db.Employees.Find(id);
+            return View(employee);
+		}
+        [HttpPost]
+        public IActionResult Info(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Employees.Update(employee);
+                _db.SaveChanges();
+                TempData["success"] = "Дані успішно оновлено!";
                 return RedirectToAction("Index");
             }
             return View(employee);
         }
-		public IActionResult Info()
+		[HttpPost]
+		public IActionResult Delete(int id)
 		{
-			return View();
+			var employee = _db.Employees.Find(id);
+			if (ModelState.IsValid)
+			{
+                if (employee != null)
+                {
+                    _db.Employees.Remove(employee);
+                    _db.SaveChanges();
+                }
+				TempData["success"] = "Дані успішно видалено!";
+				return RedirectToAction("Index");
+			}
+			return View(employee);
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

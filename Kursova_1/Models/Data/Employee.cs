@@ -30,7 +30,7 @@ namespace Kursova_1.Models.Data
         [StringLength(500, MinimumLength = 5, ErrorMessage = "Довжина адреси повинна бути від 5 до 500 символів.")]
         public string? Adress { get; set; }
         [DisplayName("Заробітна плата")]
-        [Range(1, 100, ErrorMessage = "Зарплата повинна бути числом та більшою нуля")]
+        [Range(1, int.MaxValue, ErrorMessage = "Зарплата повинна бути числом та більшою нуля")]
         [Required(ErrorMessage = "Заробітна плата є обов'язковою")]
         public int Salary { get; set; }
 

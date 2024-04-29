@@ -1,37 +1,46 @@
 ﻿@model IEnumerable<Employee>
+@if (TempData["success"] != null)
+{
+	<div id="tempDataMessage" class="alert alert-secondary p-2" style="font-size: 130%;">
+		@TempData["success"]
+		<button class="btn-close btn-close-white float-end m-0 close"></button>
+	</div>
+}
+
 <div class="text-center m-4">
 	<h1 class="display-6">Облік штату організації</h1>
 </div>
-<div class="m-6">
-	<table id="myTable" class="display">
+<div class="mt-2" style="font-size: 130%;">
+	<table id="myTable" class="display mb-2">
 		<thead>
 			<tr>
-				<th width="20%" style="font-size: 140%;">Ім'я</th>
-				<th width="20%" style="font-size: 140%;">Прізвище</th>
-				<th width="20%" style="font-size: 140%;">Посада</th>
-				<th width="15%" style="font-size: 140%;">Прийняття на посаду</th>
-				<th width="15%" style="font-size: 140%;">Заробітна плата</th>
-				<th width="10%" style="font-size: 140%;"></th>
+				<th width="20%">Ім'я</th>
+				<th width="20%">Прізвище</th>
+				<th width="20%">Посада</th>
+				<th width="15%">Прийняття на посаду</th>
+				<th width="15%">Заробітна плата</th>
+				<th width="10%"></th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach (var employee in Model)
 			{
 				<tr>
-					<td style="font-size: 140%;">@employee.FirstName</td>
-					<td style="font-size: 140%;">@employee.LastName</td>
-					<td style="font-size: 140%;">@employee.Position</td>
-					<td style="font-size: 140%;">@employee.DateOfEmployment</td>
-					<td style="font-size: 140%;">@employee.Salary ₴</td>
-					<td style="font-size: 140%;">
-						<form asp-action="Info" asp-route-id="@employee.Id" method="post">
+					<td>@employee.FirstName</td>
+					<td>@employee.LastName</td>
+					<td>@employee.Position</td>
+					<td>@employee.DateOfEmployment</td>
+					<td>@employee.Salary ₴</td>
+					<td>
+						<a asp-action="Info" asp-route-id="@employee.Id">
 							<button type="submit" class="btn btn-secondary" style="font-size: 140%;"><i class="bi bi-info-lg"></i></button>
-						</form>
+						</a>
 					</td>
 				</tr>
 			}
 		</tbody>
 	</table>
+	<br />
 </div>
 @section Scripts {
 	<script src="/js/employeeTable.js"></script>

@@ -4,6 +4,7 @@ using Kursova_1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kursova_1.Migrations
 {
     [DbContext(typeof(ManageEmployeesDbContext))]
-    partial class ManageEmployeesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240428111806_MoreSeedEmployeeTable")]
+    partial class MoreSeedEmployeeTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,116 +211,6 @@ namespace Kursova_1.Migrations
                             LastName = "Коваленко",
                             Position = "Менеджер з продажів",
                             Salary = 40000
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Adress = "Київ вул. Грушевського 15",
-                            DateOfBirth = new DateOnly(1991, 1, 14),
-                            DateOfEmployment = new DateOnly(2021, 1, 14),
-                            FirstName = "Олег",
-                            LastName = "Петров",
-                            Position = "Спеціаліст з IT",
-                            Salary = 55000
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Adress = "Одеса вул. Шевченка 16",
-                            DateOfBirth = new DateOnly(1992, 2, 15),
-                            DateOfEmployment = new DateOnly(2022, 2, 15),
-                            FirstName = "Анастасія",
-                            LastName = "Коваленко",
-                            Position = "Менеджер з продажів",
-                            Salary = 45000
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Adress = "Дніпро вул. Скоропадського 17",
-                            DateOfBirth = new DateOnly(1993, 3, 16),
-                            DateOfEmployment = new DateOnly(2023, 3, 16),
-                            FirstName = "Сергій",
-                            LastName = "Куліш",
-                            Position = "HR-менеджер",
-                            Salary = 50000
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Adress = "Запоріжжя вул. Шевченка 18",
-                            DateOfBirth = new DateOnly(1994, 4, 17),
-                            DateOfEmployment = new DateOnly(2024, 4, 17),
-                            FirstName = "Ірина",
-                            LastName = "Шевченко",
-                            Position = "Фінансист",
-                            Salary = 40000
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Adress = "Київ вул. Грушевського 19",
-                            DateOfBirth = new DateOnly(1995, 5, 18),
-                            DateOfEmployment = new DateOnly(2025, 5, 18),
-                            FirstName = "Василь",
-                            LastName = "Карпенко",
-                            Position = "Системний адміністратор",
-                            Salary = 55000
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Adress = "Львів вул. Франка 19",
-                            DateOfBirth = new DateOnly(1996, 6, 19),
-                            DateOfEmployment = new DateOnly(2026, 6, 19),
-                            FirstName = "Оксана",
-                            LastName = "Павленко",
-                            Position = "Проектний менеджер",
-                            Salary = 60000
-                        },
-                        new
-                        {
-                            Id = 20,
-                            Adress = "Харків вул. Шевченка 19",
-                            DateOfBirth = new DateOnly(1997, 7, 20),
-                            DateOfEmployment = new DateOnly(2027, 7, 20),
-                            FirstName = "Олександр",
-                            LastName = "Кузьменко",
-                            Position = "Бухгалтер",
-                            Salary = 45000
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Adress = "Одеса вул. Скоропадського 19",
-                            DateOfBirth = new DateOnly(1998, 8, 21),
-                            DateOfEmployment = new DateOnly(2028, 8, 21),
-                            FirstName = "Юлія",
-                            LastName = "Михайлова",
-                            Position = "HR-менеджер",
-                            Salary = 50000
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Adress = "Дніпро вул. Шевченка 19",
-                            DateOfBirth = new DateOnly(1999, 9, 22),
-                            DateOfEmployment = new DateOnly(2029, 9, 22),
-                            FirstName = "Вікторія",
-                            LastName = "Коваленко",
-                            Position = "Менеджер з продажів",
-                            Salary = 40000
-                        },
-                        new
-                        {
-                            Id = 23,
-                            Adress = "Львів вул. Липинського 23",
-                            DateOfBirth = new DateOnly(2000, 10, 23),
-                            DateOfEmployment = new DateOnly(2030, 10, 23),
-                            FirstName = "Олена",
-                            LastName = "Михайлова",
-                            Position = "Програміст",
-                            Salary = 60000
                         });
                 });
 #pragma warning restore 612, 618
