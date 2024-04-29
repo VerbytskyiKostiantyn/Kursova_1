@@ -22,15 +22,15 @@ body {
 }
 
 .nav-link i {
-    color: #93a1a1; /* Світлий сірий колір, який використовується в Solar */
-    transition: color 0.3s ease; /* Плавний перехід кольору */
+    color: #93a1a1;
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover i {
-    color: #6cb4d5; /* М'який синій колір */
+    color: #6cb4d5;
 }
 
 .nav-link:focus i,
 .nav-link:active i {
-    color: #398cb2; /* Темніший синій колір */
+    color: #398cb2;
 }
